@@ -10,13 +10,15 @@ import os
 import can
 
 # CANバスの取得
-bus = can.interface.Bus(channel = 'can0', bustyp = 'socketcan_ctypes')
+bus = can.interface.Bus(channel = 'can0', bustye = 'socketcan_ctypes')
 
 def send_motor_control_amount(left=0.0, right=0.0, duration=1.0):
 
     # メッセージの組み立て
     msg_txt = f"{left:.1f},{right:.1f},{duration:2.1f}"
-    msg = can.Message(data=msg_txt)
+    # https://python-can.readthedocs.io/en/stable/message.html
+    msg_bytes = bytes(msg_txt)
+    msg = can.Message(data=msg_bytes)
 
     try:
         bus.send(msg)
