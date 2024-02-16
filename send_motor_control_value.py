@@ -10,7 +10,7 @@ import os
 import can
 
 # CANバスの取得
-bus = can0 = can.interface.Bus(channel = 'can0', bustyp = 'socketcan_ctypes')
+bus = can.interface.Bus(channel = 'can0', bustyp = 'socketcan_ctypes')
 
 def send_motor_control_amount(left=0.0, right=0.0, duration=1.0):
 
