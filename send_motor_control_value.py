@@ -18,7 +18,7 @@ def send_motor_control_amount(left=0.0, right=0.0, duration=1.0):
     msg_txt = f"{left:.1f},{right:.1f},{duration:2.1f}"
     # https://python-can.readthedocs.io/en/stable/message.html
     msg_bytes = bytes(msg_txt, 'utf-8')
-    msg = can.Message(arbitration_id = 0x123, data=msg_bytes, is_extended_id = False)
+    msg = can.Message(arbitration_id = 0x123, data=[0, 1, 2, 3], is_extended_id = False)
 
     try:
         bus.send(msg)
