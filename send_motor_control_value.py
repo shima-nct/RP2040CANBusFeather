@@ -17,10 +17,10 @@ def send_motor_control_amount(left=0.0, right=0.0, duration=1.0):
 
     msg_left = can.Message(arbitration_id = 0x123, data=struct.pack('f', left), is_extended_id = False)
     msg_right = can.Message(arbitration_id = 0x124, data=struct.pack('f', right), is_extended_id = False)
-    msg_dulation = can.Message(arbitration_id = 0x125, data=struct.pack('f', msg_dulation), is_extended_id = False)
+    msg_duration = can.Message(arbitration_id = 0x125, data=struct.pack('f', duration), is_extended_id = False)
 
     try:
-        for msg in (msg_left, msg_right, msg_dulation):
+        for msg in (msg_left, msg_right, msg_duration):
             bus.send(msg)
             print(f"Message sent on {bus.channel_info}")
     except can.CanError:
