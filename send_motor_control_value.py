@@ -7,6 +7,7 @@
 # https://www.waveshare.com/wiki/2-CH_CAN_HAT
 
 import struct
+import time
 import os
 import can
 
@@ -25,6 +26,7 @@ def send_motor_control_amount(left=0.0, right=0.0, duration=1.0):
             print(f"Message sent on {bus.channel_info}")
     except can.CanError:
         print("Message NOT sent")
+    time.sleep(duration)
 
 def main():
     while True:
